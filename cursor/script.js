@@ -1,18 +1,17 @@
-// Smooth Scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
+// Sayfa yüklendiğinde çalışacak kodlar
+document.addEventListener('DOMContentLoaded', function() {
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
         });
     });
-});
-
-// Form Submission
-document.getElementById('contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('Mesajınız başarıyla gönderildi!');
-    this.reset();
 });
 
 // Navbar Scroll Effect
@@ -25,17 +24,6 @@ window.addEventListener('scroll', function() {
         header.style.background = 'rgba(255, 255, 255, 0.95)';
         header.style.boxShadow = 'none';
     }
-});
-
-// Project Cards Hover Effect
-document.querySelectorAll('.proje-card').forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-5px)';
-    });
-    
-    card.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0)';
-    });
 });
 
 // Zıplayan Top Hareketi
@@ -68,25 +56,27 @@ document.querySelectorAll('.message').forEach((message, index) => {
 
 // Gerçeği Kabul Et Butonu
 const realityButton = document.getElementById('realityButton');
-realityButton.addEventListener('click', () => {
-    // İlk dalga konfeti
-    for (let i = 0; i < 100; i++) {
-        setTimeout(() => {
-            createConfetti();
-        }, i * 20);
-    }
-    
-    // İkinci dalga konfeti (0.5 saniye sonra)
-    setTimeout(() => {
-        for (let i = 0; i < 50; i++) {
+if (realityButton) {
+    realityButton.addEventListener('click', () => {
+        // İlk dalga konfeti
+        for (let i = 0; i < 100; i++) {
             setTimeout(() => {
                 createConfetti();
             }, i * 20);
         }
-    }, 500);
-    
-    alert('Tebrikler! Artık gerçeği kabul ettin! 🎉\nAma üzülme, sen de çok özelsin! 😊');
-});
+        
+        // İkinci dalga konfeti (0.5 saniye sonra)
+        setTimeout(() => {
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    createConfetti();
+                }, i * 20);
+            }
+        }, 500);
+        
+        alert('Tebrikler! Artık gerçeği kabul ettin! 🎉\nAma üzülme, sen de çok özelsin! 😊');
+    });
+}
 
 // Konfeti Oluşturma
 function createConfetti() {
@@ -118,13 +108,11 @@ function createConfetti() {
 }
 
 // Sayfa Yüklendiğinde Animasyonlar
-window.addEventListener('load', () => {
-    document.querySelectorAll('.fact-card').forEach((card, index) => {
-        card.style.animationDelay = `${index * 0.3}s`;
-    });
+document.querySelectorAll('.fact-card').forEach((card, index) => {
+    card.style.animationDelay = `${index * 0.3}s`;
 });
 
 // Mini Topların Rastgele Hareketi
 document.querySelectorAll('.mini-ball').forEach(ball => {
     ball.style.animationDuration = `${Math.random() * 2 + 1}s`;
-}); 
+});
