@@ -1,0 +1,284 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comic Neue', cursive;
+    background: linear-gradient(135deg, #ffd700, #ff69b4);
+    color: #333;
+    overflow-x: hidden;
+}
+
+.basketball-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('basketball-pattern.png');
+    opacity: 0.1;
+    z-index: -1;
+}
+
+/* Zıplayan Top Animasyonu */
+.bouncing-ball {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    background: url('basketball.png');
+    background-size: contain;
+    animation: bounce 2s infinite;
+    z-index: 1000;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-100px); }
+}
+
+/* Header Stili */
+header {
+    text-align: center;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.rainbow-text {
+    font-size: 3rem;
+    background: linear-gradient(to right, 
+        #ff0000, #ff8000, #ffff00, #80ff00, #00ff00, #00ff80, 
+        #00ffff, #0080ff, #0000ff, #8000ff, #ff00ff, #ff0080);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: rainbow 5s linear infinite;
+}
+
+@keyframes rainbow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+.bounce-text {
+    font-size: 1.5rem;
+    animation: bounceText 1s infinite;
+}
+
+@keyframes bounceText {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Fact Cards */
+.facts-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.fact-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    text-align: center;
+    transform-origin: center;
+}
+
+.fact-card img {
+    max-width: 200px;
+    margin-bottom: 1rem;
+}
+
+.jumping-arrow {
+    font-size: 2rem;
+    animation: jumpArrow 1s infinite;
+}
+
+@keyframes jumpArrow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Animations */
+.spin-in {
+    animation: spinIn 1s ease-out;
+}
+
+@keyframes spinIn {
+    from { transform: rotate(-360deg) scale(0); }
+    to { transform: rotate(0) scale(1); }
+}
+
+.slide-in {
+    animation: slideIn 1s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+.rotate-in {
+    animation: rotateIn 1s ease-out;
+}
+
+@keyframes rotateIn {
+    from { transform: rotate(-180deg) scale(0); }
+    to { transform: rotate(0) scale(1); }
+}
+
+/* Motivation Section */
+.motivation {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.3);
+    margin: 2rem;
+    border-radius: 20px;
+}
+
+.float-text {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.message {
+    font-size: 1.2rem;
+    margin: 1rem;
+    opacity: 0;
+    animation: popIn 0.5s ease-out forwards;
+}
+
+@keyframes popIn {
+    from { 
+        opacity: 0;
+        transform: scale(0);
+    }
+    to { 
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Fun Button */
+.fun-button-container {
+    text-align: center;
+    margin: 2rem;
+}
+
+.fun-button {
+    font-family: 'Comic Neue', cursive;
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.fun-button:hover {
+    transform: scale(1.1);
+}
+
+/* Konfeti Stilleri */
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background-color: #f0f;
+    opacity: 0;
+    transform-origin: center;
+}
+
+.confetti.square {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.confetti.triangle {
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.confetti.circle {
+    border-radius: 50%;
+}
+
+@keyframes confettiFall {
+    0% {
+        opacity: 1;
+        transform: translateY(-100vh) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-75vh) rotate(90deg) translateX(20px);
+    }
+    50% {
+        transform: translateY(-50vh) rotate(180deg) translateX(-20px);
+    }
+    75% {
+        transform: translateY(-25vh) rotate(270deg) translateX(20px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+@keyframes confettiSway {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(20px) rotateX(45deg);
+    }
+    50% {
+        transform: translateX(-20px) rotateY(45deg);
+    }
+    75% {
+        transform: translateX(20px) rotateZ(45deg);
+    }
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.mini-balls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.mini-ball {
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .rainbow-text {
+        font-size: 2rem;
+    }
+
+    .fact-card {
+        margin: 1rem;
+        padding: 1rem;
+    }
+} 
