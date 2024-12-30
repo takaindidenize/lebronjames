@@ -17,7 +17,13 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, rgba(255,215,0,0.1), rgba(255,105,180,0.1));
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(255, 215, 0, 0.1),
+        rgba(255, 215, 0, 0.1) 10px,
+        rgba(255, 105, 180, 0.1) 10px,
+        rgba(255, 105, 180, 0.1) 20px
+    );
     opacity: 0.1;
     z-index: -1;
 }
@@ -25,12 +31,15 @@ body {
 /* Zıplayan Top Animasyonu */
 .bouncing-ball {
     position: fixed;
-    width: 50px;
-    height: 50px;
+    font-size: 50px;
+    line-height: 1;
     content: '🏀';
-    background-size: contain;
     animation: bounce 2s infinite;
     z-index: 1000;
+}
+
+.bouncing-ball::before {
+    content: '🏀';
 }
 
 @keyframes bounce {
