@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sen Lebron Değilsin!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            background: linear-gradient(135deg, #ffd700, #ff69b4);
+            color: #333;
+            min-height: 100vh;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .rainbow-text {
+            font-size: 3rem;
+            margin: 2rem 0;
+            background: linear-gradient(to right, 
+                #ff0000, #ff8000, #ffff00, #80ff00, #00ff00, #00ff80, 
+                #00ffff, #0080ff, #0000ff, #8000ff, #ff00ff, #ff0080);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: rainbow 5s linear infinite;
+        }
+
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        .fact-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 600px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .emoji {
+            font-size: 48px;
+            margin: 1rem;
+        }
+
+        .message {
+            font-size: 1.2rem;
+            margin: 1rem;
+            animation: popIn 0.5s ease-out forwards;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+
+        .fun-button {
+            font-family: 'Comic Sans MS', cursive;
+            font-size: 1.5rem;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s;
+            margin: 2rem;
+        }
+
+        .fun-button:hover {
+            transform: scale(1.1);
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #f0f;
+            opacity: 0;
+        }
+
+        @keyframes confettiFall {
+            0% { opacity: 1; transform: translateY(-100vh) rotate(0deg); }
+            100% { opacity: 0; transform: translateY(100vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="rainbow-text">Sen Lebron James Değilsin!</h1>
+
+    <div class="fact-card">
+        <div class="emoji">📏</div>
+        <p>Lebron: 2.06m</p>
+        <p>Sen: 1.75m</p>
+        <p>Biraz boy farkı var sanki! 🤔</p>
+    </div>
+
+    <div class="fact-card">
+        <div class="emoji">💰</div>
+        <p>Lebron'un Yıllık Kazancı: $44.5 Milyon</p>
+        <p>Senin Harçlığın: 1000TL</p>
+        <p>Küçük bir fark var gibi! 💰</p>
+    </div>
+
+    <div class="fact-card">
+        <div class="emoji">🏀</div>
+        <p>Lebron: NBA'in En İyilerinden</p>
+        <p>Sen: allahın kullarına üyesin</p>
+        <p>Ama olsun, sen de iyisin! 🏀</p>
+    </div>
+
+    <div class="fact-card">
+        <p class="message">Sen de çok özelsin! 🌟</p>
+        <p class="message">holiye domaldın! Lebron yapabilir mi? 📚</p>
+        <p class="message">asapmert seni çok seviyor! ❤️</p>
+        <p class="message">cıngırock'ta Lebron'u yenebilirsin! 🎮</p>
+    </div>
+
+    <button id="realityButton" class="fun-button">
+        Gerçeği Kabul Ediyorum! 🎉
+    </button>
+
+    <script>
+        document.getElementById('realityButton').addEventListener('click', () => {
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * window.innerWidth + 'px';
+                    confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                    confetti.style.animation = `confettiFall ${Math.random() * 3 + 2}s linear`;
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 5000);
+                }, i * 20);
+            }
+            
+            alert('Tebrikler! Artık gerçeği kabul ettin! 🎉\nAma üzülme, sen de çok özelsin! 😊');
+        });
+
+        document.querySelectorAll('.message').forEach((message, index) => {
+            message.style.animationDelay = `${index * 0.3}s`;
+        });
+    </script>
+</body>
+</html> 
